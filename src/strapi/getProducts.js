@@ -1,6 +1,9 @@
 import url from "./URL";
-export default async() => {const response = await fetch(`${url}/products`).catch(error => console.error(error));
-    const products = await response.json();
+import axios from "axios";
+export default async() => {
+    const response = await axios.get(`${url}/products`).catch(error => 
+        console.error(error));
+    let products = response.data;
     if (products.error){
         return null;
     }
